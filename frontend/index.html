@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <header class="header">
+            <div class="header-content">
+                <h1>My Todo List</h1>
+                <div class="user-info">
+                    <span id="user-name">Welcome, User</span>
+                    <div class="user-menu">
+                        <button onclick="window.location.href='profile.html'" class="btn btn-outline">Profile</button>
+                        <button id="logout-btn" class="btn btn-secondary">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        
+        <main class="main-content">
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="category-filter">Filter by Category:</label>
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="status-filter">Filter by Status:</label>
+                    <select id="status-filter">
+                        <option value="">All Tasks</option>
+                        <option value="false">Pending</option>
+                        <option value="true">Completed</option>
+                    </select>
+                </div>
+                <button id="add-category-btn" class="btn btn-secondary">Manage Categories</button>
+            </div>
+
+            
+            <div class="task-form-container">
+                <h3>Add New Task</h3>
+                <form id="task-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="task-title" placeholder="Task title..." required>
+                        </div>
+                        <div class="form-group">
+                            <select id="task-category">
+                                <option value="">No Category</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select id="task-priority">
+                                <option value="LOW">Low</option>
+                                <option value="MEDIUM" selected>Medium</option>
+                                <option value="HIGH">High</option>
+                                <option value="URGENT">Urgent</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select id="task-status">
+                                <option value="TODO" selected>To Do</option>
+                                <option value="IN_PROGRESS">In Progress</option>
+                                <option value="COMPLETED">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="task-description" placeholder="Task description..." rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-due-date">Due Date:</label>
+                        <input type="datetime-local" id="task-due-date">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                    <button type="button" id="cancel-edit" class="btn btn-secondary" style="display: none;">Cancel</button>
+                </form>
+            </div>
+
+            
+            <div class="task-list-container">
+                <h3>📋 Task Board</h3>
+                <div class="task-board">
+                    <div class="task-column todo" id="todo-column">
+                        <h4>📝 To Do</h4>
+                        <div class="task-drop-zone" data-status="todo">
+                            <div id="todo-tasks">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-column in-progress" id="in-progress-column">
+                        <h4>⚡ In Progress</h4>
+                        <div class="task-drop-zone" data-status="in-progress">
+                            <div id="in-progress-tasks">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-column completed" id="completed-column">
+                        <h4>✅ Completed</h4>
+                        <div class="task-drop-zone" data-status="completed">
+                            <div id="completed-tasks">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="task-list" style="display: none;">
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+    <div id="category-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Manage Categories</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="category-form">
+                    <div class="form-group">
+                        <input type="text" id="category-name" placeholder="Category name..." required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="category-description" placeholder="Description...">
+                    </div>
+                    <div class="form-group">
+                        <label for="category-color">Color:</label>
+                        <input type="color" id="category-color" value="#007bff">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Category</button>
+                </form>
+
+                <div class="category-list">
+                    <h4>Existing Categories</h4>
+                    <div id="category-list">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
